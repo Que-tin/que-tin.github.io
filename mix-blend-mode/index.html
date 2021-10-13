@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mix Blend Modes</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 100vw;
+        margin: 0;
+        font-family: Open Sans;
+      }
+
+      .menu {
+        all: unset;
+        font-family: Open Sans;
+        position: sticky;
+        right: 5rem;
+        top: 5rem;
+        cursor: pointer;
+        mix-blend-mode: color-dodge;
+      }
+
+      .section {
+        background: #ccc;
+        padding: 5rem;
+        height: 100vh;
+        width: 100%;
+        gap: 5rem;
+        align-items: center;
+        justify-items: center;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .image,
+      .text {
+        grid-area: 1 / 1;
+      }
+
+      .text {
+        text-align: center;
+        font-size: 4rem;
+        font-weight: 700;
+        color: #fff;
+        background: transparent
+      }
+      
+      .image {
+        width: 80%;
+        align-self: center;
+      }
+      
+      .image__wrapper {
+        display: grid;
+        align-items: center;
+        justify-items: center;
+      }
+
+      .white {
+        mix-blend-mode: darken;
+      }
+
+      .black {
+        mix-blend-mode: lighten;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="section">
+      <img class="black" src="./black.jpg" alt="">
+      <img class="white" src="./white.png" alt="">
+    </div>
+    <a href="https://ilyashubin.github.io/FilterBlend/">Mix Blend Modes</a>
+    <a href="https://ishadeed.com/article/blending-modes-css/">Mix Blend Modes</a>
+  </body>
+</html>

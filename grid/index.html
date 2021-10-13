@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid</title>
+    <style>
+      body {
+        height: 100vh;
+      }
+
+      .wrapper {
+        height: 100%;
+        align-items: center;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5rem;
+      }
+
+      @media (min-width: 1200px) {
+        .wrapper {
+          grid-template-columns: 200px 1fr min(50vh, 300px) 20rem 10%;
+          grid-template-rows: repeat(2, 1fr);
+        }
+      }
+
+      .image {
+        max-width: 100%;
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <img class="image" src="./Firefox.webp" alt="" />
+      <img class="image" src="./Firefox.webp" alt="" />
+      <img class="image" src="./Firefox.webp" alt="" />
+      <img class="image" src="./Firefox.webp" alt="" />
+      <img class="image" src="./Firefox.webp" alt="" />
+      <img class="image" src="./Firefox.webp" alt="" />
+      <img class="image" src="./Firefox.webp" alt="" />
+      <img class="image" src="./Firefox.webp" alt="" />
+      <img class="image" src="./Firefox.webp" alt="" />
+      <img class="image" src="./Firefox.webp" alt="" />
+    </div>
+    <div>
+  </body>
+</html>

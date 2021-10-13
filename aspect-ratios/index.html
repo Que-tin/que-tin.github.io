@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aspect - New</title>
+    <style>      
+      .wrapper {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        gap: 5rem;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .image {
+        min-width: 100%;
+        max-width: 500px;
+      }
+
+       /* Ratio */
+
+      .aspectRatio {
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="aspectRatio">
+        <picture>
+          <source 
+            srcset="Firefox.webp 1200w, Firefox-sm.webp 768w, Firefox-xs.webp 320w" 
+            sizes="(min-width: 1200px) 1200px, (min-width: 768px) 768px, 100vw"
+            type="image/webp">
+          <source srcset="./Firefox.png" type="image/png">
+          <img class="image" src="./Firefox.jpeg" alt="Firefox">
+        </picture>
+      </div>
+    </div>
+    <div>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom properties</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      } 
+
+      .wrapper {
+        flex-direction: column;
+        padding: 5rem;
+      }
+
+      .details {
+        margin-bottom: 3rem;
+      }
+
+      svg {
+        height: 1.25rem;
+      }
+
+      /* Styled */
+
+      .details[open] svg {
+        transform: rotate(180deg);
+      }
+
+      .details--styled {
+        font-family: Open Sans;
+      }
+
+      .summary {
+        background-color: #3498db;
+        color: #fff;
+        padding: .5rem 1rem;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .content {
+        padding: 1rem;
+      }
+
+      .square {
+        margin: 1rem;
+        height: 10rem;
+        width: 10rem;
+      }
+
+
+      /* Custom Properties */
+
+      :root {
+        --color-1: red;
+        --color-2: green;
+        --color-3: blue;
+      }
+
+      .theme--1 {
+        --font-color: var(--color-1);
+        --background-color: var(--color-2);
+      }
+
+      .theme--2 {
+        --font-color: var(--color-3);
+        --background-color: var(--color-1);
+        --square-color: pink;
+      }
+
+      .summary {
+        color: var(--font-color, #fff);
+        background: var(--background-color, #000);
+      }
+
+      .content {
+        color: var(--background-color, #000);
+      }
+
+      .square {
+        background: var(--square-color, var(--background-color, #000));
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <details class="details details--styled">
+        <summary class="summary">
+          <p>Summary</p>
+          <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14"><path fill="currentColor" d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z" class=""></path></svg>
+        </summary>
+        <div class="content">
+          <div class="square"></div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </details>
+      <details class="details theme--1 invert details--styled">
+        <summary class="summary">
+          <p>Summary</p>
+          <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14"><path fill="currentColor" d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z" class=""></path></svg>
+        </summary>
+        <div class="content">
+          <div class="square"></div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </details>
+      <details class="details theme--2 invert details--styled">
+        <summary class="summary">
+          <p>Summary</p>
+          <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14"><path fill="currentColor" d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z" class=""></path></svg>
+        </summary>
+        <div class="content">
+          <div class="square"></div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </details>
+    </div>
+    <div>
+  </body>
+</html>
