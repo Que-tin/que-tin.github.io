@@ -12,16 +12,13 @@
       } 
 
       .wrapper {
-        flex-direction: column;
         padding: 5rem;
-      }
-
-      .details {
-        margin-bottom: 3rem;
+        height: 100vh;
+        font-size: 1.625rem;
       }
 
       svg {
-        height: 1.25rem;
+        height: 1.75rem;
       }
 
       /* Styled */
@@ -31,21 +28,50 @@
       }
 
       .details--styled {
+        margin-top: 4rem;
         font-family: Open Sans;
       }
 
       .summary {
-        background-color: #3498db;
+        background-color: #55efc4;
+        cursor: pointer;
         color: #fff;
-        padding: .5rem 1rem;
+        padding: 1.25rem;
         list-style: none;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        line-height: 1;
+      }
+      
+      .summary--animated {
+        background-color: #a29bfe;
+      }
+
+      .svg--animated {
+        transition: transform .2s ease-in-out;
+      }
+
+      .details--animated[open] summary ~ * {
+        animation: open .5s ease-in-out;
+      }
+
+      @keyframes open {
+        0%    {
+          opacity: 0; 
+          transform: translateY(-10px);
+          max-height: 0;
+        }
+        100%  {
+          opacity: 1; 
+          transform: translateY(0);
+          max-height: 20rem;
+        }
       }
 
       .content {
         padding: 1rem;
+        line-height: 1.5;
       }
     </style>
   </head>
@@ -58,8 +84,18 @@
 
       <details class="details details--styled">
         <summary class="summary">
-          <p>Summary</p>
-          <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14"><path fill="currentColor" d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z" class=""></path></svg>
+          <p>Styled Element</p>
+          <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z" class=""></path></svg>
+        </summary>
+        <div class="content">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </details>
+
+      <details class="details details--styled details--animated">
+        <summary class="summary summary--animated">
+          <p>Animated Element</p>
+          <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg--animated"><path fill="currentColor" d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z" class=""></path></svg>
         </summary>
         <div class="content">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
