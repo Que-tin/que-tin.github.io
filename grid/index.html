@@ -8,42 +8,144 @@
     <style>
       body {
         height: 100vh;
+        margin: 0;
+        font-family: Montserrat;
+        --gap: 1rem;
+        --columns: 10% 1fr minmax(50vh, 300px);
+        --rows: repeat(2, 1fr);
+        --flow: row;
+      }
+      
+      * {
+        box-sizing: border-box;
+      }
+      
+      input,
+      select {
+        appearance: none;
+        font-family: Montserrat;
+        font-size: 1.25rem;
+        padding: 1rem;
+        width: 100%;
+        border: 3px solid #636e72;
+      }
+
+      label {
+        font-size: 1.5rem;
+        display: block;
+      }
+      
+      p {
+        margin-bottom: .5rem;
       }
 
       .wrapper {
-        height: 100%;
-        align-items: center;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 2fr 3fr;
         gap: 5rem;
       }
 
-      @media (min-width: 1200px) {
-        .wrapper {
-          grid-template-columns: 200px 1fr min(50vh, 300px) 20rem 10%;
-          grid-template-rows: repeat(2, 1fr);
-        }
+      .controls {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .gridItem {
+        background: #ff7675;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        font-weight: 500;
+      }
+
+      .demo {
+        height: 100%;
+        align-items: center;
+        display: grid;
+        grid-template-columns: var(--columns);
+        grid-template-rows: var(--rows);
+        grid-auto-flow: var(--flow);
+        gap: var(--gap);
+        height: 600px;
       }
 
       .image {
         max-width: 100%;
         flex: 1;
       }
+
+      .gridItem--3 {
+        grid-column: span 2;
+      }
+
+      .code {
+        white-space: break-spaces;
+      }
+
+
     </style>
   </head>
   <body>
     <div class="wrapper">
-      <img class="image" src="./Firefox.webp" alt="" />
-      <img class="image" src="./Firefox.webp" alt="" />
-      <img class="image" src="./Firefox.webp" alt="" />
-      <img class="image" src="./Firefox.webp" alt="" />
-      <img class="image" src="./Firefox.webp" alt="" />
-      <img class="image" src="./Firefox.webp" alt="" />
-      <img class="image" src="./Firefox.webp" alt="" />
-      <img class="image" src="./Firefox.webp" alt="" />
-      <img class="image" src="./Firefox.webp" alt="" />
-      <img class="image" src="./Firefox.webp" alt="" />
+      <div class="controls">
+        <label>
+          <p>Gap</p>
+          <input class="number" type="text" placeholder="Gap" value="1rem">
+        </label>
+        <label>
+          <p>Columns</p>
+          <input class="columns" type="text" placeholder="Columns" value="10% 1fr minmax(50vh, 300px)">
+        </label>
+        <label>
+          <p>Rows</p>
+          <input class="rows" type="text" placeholder="Rows" value="repeat(2, 1fr)">
+        </label>
+        <label>
+          <p>Grid Auto Flow</p>
+          <select class="flow">
+            <option value="row">row</option>
+            <option value="row dense">row dense</option>
+            <option value="column">column</option>
+            <option value="column dense">column dense</option>
+          </select>
+        </label>
+      </div>
+      <div class="demo">
+        <div class="gridItem">1</div>
+        <div class="gridItem">2</div>
+        <div class="gridItem gridItem--3">
+          <code class="code">
+.gridItem--3 {
+  grid-column: span 2;
+}
+          </code>
+        </div>
+        <div class="gridItem">4</div>
+      </div>
     </div>
-    <div>
+
+    <script>
+      const demo = document.querySelector('.demo');
+
+      document.querySelector('.number').addEventListener('keyup', (e) => {
+        demo.style.setProperty('--gap', e.target.value);
+      });
+
+      document.querySelector('.columns').addEventListener('keyup', (e) => {
+        demo.style.setProperty('--columns', e.target.value);
+      });
+
+      document.querySelector('.rows').addEventListener('keyup', (e) => {
+        demo.style.setProperty('--rows', e.target.value);
+      });
+
+      document.querySelector('.flow').addEventListener('change', (e) => {
+        demo.style.setProperty('--flow', e.target.value);
+      });
+    </script>
   </body>
 </html>
