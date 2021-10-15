@@ -24,16 +24,19 @@
       select {
         appearance: none;
         font-family: Montserrat;
-        font-size: 1.25rem;
+        font-size: 1.125rem;
         padding: 1rem;
         width: 100%;
         border: 3px solid #636e72;
       }
 
-      label {
-        font-size: 1.5rem;
-        display: block;
+      label:not(:last-child) {
         margin-bottom: 1rem;
+      }
+
+      label {
+        font-size: 1.25rem;
+        display: block;
       }
       
       p {
@@ -44,7 +47,8 @@
       .wrapper {
         display: grid;
         grid-template-columns: 2fr 3fr;
-        gap: 5rem;
+        gap: 5%;
+        height: 100vh;
       }
 
       .gridItem {
@@ -79,6 +83,12 @@
 
       .code {
         white-space: break-spaces;
+      }
+
+      .controls {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
 
 
