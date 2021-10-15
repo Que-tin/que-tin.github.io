@@ -19,13 +19,13 @@
       .wrapper {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 7%;
-        row-gap: 10%;
+        gap: 5%;
         height: 100vh;
       }
 
       .image {
         max-width: 100%;
+        max-height: 150px;
       }
 
       .image--1 {
@@ -57,14 +57,12 @@
         filter: url(#noise);
       }
 
-      /*
-        filter: brightness(0.4);
-        filter: contrast(10%);
-        filter: grayscale(10%);
-        filter: hue-rotate(180deg);
-        filter: saturate(10%);
-        filter: sepia(10%); 
-        */
+      .gridItem {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+
     </style>
   </head>
   <body>
@@ -75,19 +73,19 @@
       </filter>
     </svg>
     <div class="wrapper">
-      <div>
+      <div class="gridItem">
         <img class="image image--1" src="./Firefox.webp" alt="" />
         <code class="code">filter: drop-shadow(10px 10px 10px #000);</code>
       </div>
-      <div>
+      <div class="gridItem">
         <img class="image image--2" src="./Firefox.webp" alt="" />
         <code class="code">filter: blur(10px);</code>
       </div>
-      <div>
+      <div class="gridItem">
         <img class="image image--3" src="./Firefox.webp" alt="" />
         <code class="code">filter: contrast(200%);</code>
       </div>
-      <div>
+      <div class="gridItem">
         <img class="image image--4" src="./Firefox.webp" alt="" />
         <code class="code">filter: opacity(40%) invert(80%);</code>
       </div>
