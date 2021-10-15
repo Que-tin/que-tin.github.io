@@ -4,32 +4,111 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Picture</title>
-    <style>      
+    <title>Clip Path</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+    
       .wrapper {
         height: 100vh;
         width: 100vw;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-around;
       }
 
-      .image {
-        max-width: 400px;
+      .clipPath,
+      .clipPath--1,
+      .clipPath--2,
+      .clipPath--3,
+      .clipPath--4 {
+        width: 300px;
+        height: 300px;
+        background: #ffeaa7;
+        transition: .2s clip-path ease;
+      }
+
+      .clipPath--1 {
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      }
+
+      .clipPath--2 {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+      }
+      
+      .clipPath--3 {
+        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      }
+
+      .clipPath--3:hover {
+        clip-path: polygon(51% 7%, 61% 35%, 86% 36%, 68% 57%, 73% 83%, 50% 70%, 24% 84%, 32% 57%, 14% 37%, 39% 35%);
+      }
+
+      .clipPath--4 {
+        clip-path: polygon(0% 0%, 0% 100%, 25% 100%, 25% 25%, 75% 25%, 75% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0%);
+      }
+
+      .clipPath--4:hover {
+        clip-path: polygon(0% 0%, 0% 100%, 0 100%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%, 100% 100%, 100% 0%);
+      }
+
+      button {
+        appearance: none;
+        font-family: Montserrat;
+        font-size: 1.125rem;
+        padding: 1rem;
+        border: 3px solid #636e72;
+        background: transparent;
+        width: 300px;
+      }
+
+      button:not(:last-child) {
+        margin-bottom: .5rem;
+      }
+
+      .controls {
+        display: flex;
+        flex-direction: column;
       }
     </style>
   </head>
   <body>
     <div class="wrapper">
-      <picture>
-        <source 
-          srcset="Firefox.webp 1200w, Firefox-sm.webp 768w, Firefox-xs.webp 320w" 
-          sizes="(min-width: 1200px) 1200px, (min-width: 768px) 768px, 100vw"
-          type="image/webp">
-        <source srcset="./Firefox.png" type="image/png">
-        <img class="image" src="./Firefox.jpeg" alt="Firefox">
-      </picture>
+      <div class="controls">
+        <button class="button triangle">Triangle</button>
+        <button class="button chat">Chat</button>
+        <button class="button star">Star</button>
+        <button class="button frame">Frame</button>
+      </div>
+      <div class="clipPath"></div>
     </div>
     <div>
+
+    <script>
+      const clip = document.querySelector('.clipPath');
+
+      document.querySelector('.triangle').addEventListener('click', () => {
+        clip.className = '';
+        clip.classList.add('clipPath--1');
+      });
+      
+      document.querySelector('.chat').addEventListener('click', () => {
+        clip.className = '';
+        clip.classList.add('clipPath--2');
+      });
+      
+      document.querySelector('.star').addEventListener('click', () => {
+        clip.className = '';
+        clip.classList.add('clipPath--3');
+      });
+      
+      document.querySelector('.frame').addEventListener('click', () => {
+        clip.className = '';
+        clip.classList.add('clipPath--4');
+      });
+    </script>
   </body>
 </html>
