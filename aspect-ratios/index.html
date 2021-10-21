@@ -4,43 +4,111 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aspect - New</title>
-    <style>      
+    <title>Aspect Ratio</title>
+    <style>
+      * {
+        margin: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Montserrat;
+      }
+
+      input,
+      select {
+        appearance: none;
+        font-family: Montserrat;
+        font-size: 1.125rem;
+        padding: 1rem;
+        width: 100%;
+        max-width: 100%;
+        border: 3px solid #636e72;
+      }
+
+      label:not(:last-child) {
+        margin-bottom: 1.5rem;
+      }
+
+      label {
+        font-size: 1.25rem;
+        display: block;
+      }
+      
+      p {
+        margin-top: 0;
+        margin-bottom: .5rem;
+      }
+
       .wrapper {
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-        gap: 5rem;
-        align-items: center;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        gap: 5%;
+        --aspect-ratio: 1 / 1;
+        --object-fit: cover;
+        --object-position: center;
       }
 
       .image {
-        min-width: 100%;
         max-width: 500px;
-      }
-
-       /* Ratio */
-
-      .aspectRatio {
-        aspect-ratio: 16 / 9;
-        overflow: hidden;
+        object-fit: var(--object-fit);
+        object-position: var(--object-position);
+        aspect-ratio: var(--aspect-ratio);
       }
     </style>
   </head>
   <body>
     <div class="wrapper">
-      <div class="aspectRatio">
-        <picture>
-          <source 
-            srcset="Firefox.webp 1200w, Firefox-sm.webp 768w, Firefox-xs.webp 320w" 
-            sizes="(min-width: 1200px) 1200px, (min-width: 768px) 768px, 100vw"
-            type="image/webp">
-          <source srcset="./Firefox.png" type="image/png">
-          <img class="image" src="./Firefox.jpeg" alt="Firefox">
-        </picture>
+      <div class="controls">
+        <label>
+          <p>Aspect-Ratio</p>
+          <input class="aspect-ratio" type="text" placeholder="Gap" value="1 / 1">
+        </label>
+        <label>
+          <p>Object-Fit</p>
+          <select class="object-fit">
+            <option value="cover">cover</option>
+            <option value="contain">contain</option>
+            <option value="fill">fill</option>
+          </select>
+        </label>
+        <label>
+          <p>Object-Positon</p>
+          <select class="object-position">
+            <option value="center">center</option>
+            <option value="left">left</option>
+            <option value="right">right</option>
+          </select>
+        </label>
       </div>
+      <picture>
+        <source 
+          srcset="webp-xl.webp 1200w, webp-md.webp 768w, webp-xs.webp 320w" 
+          sizes="(min-width: 1200px) 1200px, (min-width: 768px) 768px, 100vw"
+          type="image/webp">
+        <source 
+          srcset="jpg-xl.jpg 1200w, jpg-md.jpg 768w, jpg-xs.jpg 320w" 
+          sizes="(min-width: 1200px) 1200px, (min-width: 768px) 768px, 100vw"
+          type="image/jpg">
+        <img class="image" src="./jpg-xl.jpeg" alt="Firefox">
+      </picture>
     </div>
-    <div>
+
+    <script>
+      const demo = document.querySelector('.wrapper');
+
+      document.querySelector('.aspect-ratio').addEventListener('keyup', (e) => {
+        demo.style.setProperty('--aspect-ratio', e.target.value);
+      });
+
+      document.querySelector('.object-fit').addEventListener('change', (e) => {
+        demo.style.setProperty('--object-fit', e.target.value);
+      });
+
+      document.querySelector('.object-position').addEventListener('change', (e) => {
+        demo.style.setProperty('--object-position', e.target.value);
+      });
+    </script>
   </body>
 </html>
