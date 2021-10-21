@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clip Path</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-size: 3rem;
+        font-family:'Whirly Birdie';
+      }
+
+      .demo {
+        word-break: break-all;
+      }
+
+      label {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      @font-face {
+        src: url('./WhirlyBirdieVariable.ttf');
+        font-family:'Whirly Birdie';
+        font-style: normal;
+      }
+
+      @font-face {
+        src: url('./WhirlybatsVariable.ttf');
+        font-family:'Whirlybats';
+        font-style: normal;
+      }
+
+      .wrapper {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        gap: 5%;
+        height: 100vh;
+      }
+
+      .controls {
+        display: flex;
+        flex-direction: column;
+        width: 3;
+      }
+
+      input {
+        width: 100%;
+      }
+
+      .font {
+        font-family: 'Whirly Birdie', 'Adobe NotDef';
+      }
+
+      .icons {
+        font-family: Whirlybats, 'Adobe NotDef';
+      }
+      
+      .font,
+      .icons {
+        font-variation-settings: 'anim' var(--anim, 100), 'wght' var(--wght, 100), 'wdth' 100, 'ital' var(--ital, 0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="controls">
+        <label>
+          <p>Italic</p>
+          <input type="range" step="0.2" class="ital" name="ital" value="0" min="0" max="20">
+        </label>
+        <label>
+          <p>Weight</p>
+          <input type="range" step="0.5" class="wght" name="wght" value="100" min="50" max="100">
+        </label>
+        <label>
+          <p>Animation</p>
+          <input type="range" step="1" class="anim" name="anim" value="100" min="100" max="200">
+        </label>
+      </div>
+      <div class="demo">
+        <div
+          class="font"
+          contenteditable="true"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+        >
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789<br />
+        </div>
+    
+        <div
+          class="icons"
+          contenteditable="true"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+        >
+          ABCDEFGHIJKLMNOPQRSTUVWXYZÇĆΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΦΨΩͰϚϏАБВГДЕЁЖЗabcdefghijklmnopqrstuvw
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const demo = document.querySelector('.demo');
+
+      document.querySelector('.ital').addEventListener('input', (e) => {
+        demo.style.setProperty('--ital', e.target.value);
+      });
+
+      document.querySelector('.wght').addEventListener('input', (e) => {
+        demo.style.setProperty('--wght', e.target.value);
+      });
+
+      document.querySelector('.anim').addEventListener('input', (e) => {
+        demo.style.setProperty('--anim', e.target.value);
+      });
+    </script>
+  </body>
+</html>
