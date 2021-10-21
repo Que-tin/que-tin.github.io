@@ -9,15 +9,42 @@
       * {
         box-sizing: border-box;
         margin: 0;
+        padding: 0;
+        font-family: Montserrat;
       } 
 
+      input,
+      select {
+        appearance: none;
+        font-family: Montserrat;
+        font-size: 1.125rem;
+        padding: 1rem;
+        width: 100%;
+        border: 3px solid #636e72;
+      }
+
+      label:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+
+      label {
+        font-size: 1.25rem;
+        display: block;
+      }
+      
+      p {
+        margin-top: 0;
+        margin-bottom: .5rem;
+      }
+
       .wrapper {
-        flex-direction: column;
-        padding: 5rem;
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        gap: 5%;
       }
 
       .details {
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
       }
 
       svg {
@@ -34,6 +61,13 @@
         font-family: Open Sans;
       }
 
+      .demo {
+        display: flex;
+        --color-1: #fdcb6e;
+        --color-2: #ff7675;
+        --color-3: #2d3436;
+      }
+
       .summary {
         background-color: #3498db;
         color: #fff;
@@ -46,81 +80,103 @@
 
       .content {
         padding: 1rem;
+        flex: 1;
       }
 
       .square {
         margin: 1rem;
-        height: 10rem;
-        width: 10rem;
-      }
-
-
-      /* Custom Properties */
-
-      :root {
-        --color-1: red;
-        --color-2: green;
-        --color-3: blue;
+        height: 5rem;
+        width: 5rem;
       }
 
       .theme--1 {
-        --font-color: var(--color-1);
         --background-color: var(--color-2);
+        --font-color: var(--color-1);
       }
 
       .theme--2 {
-        --font-color: var(--color-3);
         --background-color: var(--color-1);
+        --font-color: var(--color-2);
         --square-color: pink;
       }
 
-      .summary {
-        color: var(--font-color, #fff);
-        background: var(--background-color, #000);
+      code {
+        white-space: pre;
       }
-
+      
       .content {
-        color: var(--background-color, #000);
+        background: var(--background-color, #000);
+        color: var(--font-color, #000);
       }
 
       .square {
-        background: var(--square-color, var(--background-color, #000));
+        background: var(--square-color, var(--color-3));
       }
     </style>
   </head>
   <body>
     <div class="wrapper">
-      <details class="details details--styled">
-        <summary class="summary">
-          <p>Summary</p>
-          <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14"><path fill="currentColor" d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z" class=""></path></svg>
-        </summary>
-        <div class="content">
+      <div class="controls">
+        <label>
+          <p>--color-1</p>
+          <input class="color-1" value="#fdcb6e">
+        </label>
+        <label>
+          <p>--color-2</p>
+          <input class="color-2" value="#ff7675">
+        </label>
+        <label>
+          <p>--color-3</p>
+          <input class="color-3" value="#2d3436">
+        </label>
+      </div>
+      <div class="demo">
+        <div class="theme--1 content">
+          <code>
+  .theme--1 {
+    --background-color: var(--color-2);
+    --font-color: var(--color-1);
+  }
+
+  .square {
+    background: var(--square-color, var(--color-3));
+  }
+          </code>
           <div class="square"></div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </div>
-      </details>
-      <details class="details theme--1 invert details--styled">
-        <summary class="summary">
-          <p>Summary</p>
-          <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14"><path fill="currentColor" d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z" class=""></path></svg>
-        </summary>
-        <div class="content">
+        <div class="theme--2 content">
+          <code>
+  .theme--1-inverted {
+    --background-color: var(--color-1);
+    --font-color: var(--color-2);
+    --square-color: pink;
+  }
+
+  .square {
+    background: var(--square-color, var(--color-3));
+  }
+          </code>
           <div class="square"></div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </div>
-      </details>
-      <details class="details theme--2 invert details--styled">
-        <summary class="summary">
-          <p>Summary</p>
-          <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14"><path fill="currentColor" d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z" class=""></path></svg>
-        </summary>
-        <div class="content">
-          <div class="square"></div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-      </details>
+      </div>
     </div>
     <div>
+
+    <script>
+      const demo = document.querySelector('.demo');
+
+      document.querySelector('.color-1').addEventListener('keyup', (e) => {
+        demo.style.setProperty('--color-1', e.target.value);
+      });
+
+      document.querySelector('.color-2').addEventListener('keyup', (e) => {
+        demo.style.setProperty('--color-2', e.target.value);
+      });
+
+      document.querySelector('.color-3').addEventListener('keyup', (e) => {
+        demo.style.setProperty('--color-3', e.target.value);
+      });
+
+    </script>
   </body>
 </html>
