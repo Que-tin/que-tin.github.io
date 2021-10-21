@@ -63,9 +63,9 @@
 
       .demo {
         display: flex;
-        --color-1: #fdcb6e;
-        --color-2: #ff7675;
-        --color-3: #2d3436;
+        --color-1: #fff;
+        --color-2: #000;
+        --color-3: #666;
       }
 
       .summary {
@@ -107,6 +107,7 @@
       .content {
         background: var(--background-color, #000);
         color: var(--font-color, #000);
+        border: 5px solid var(--font-color, #000);
       }
 
       .square {
@@ -119,15 +120,15 @@
       <div class="controls">
         <label>
           <p>--color-1</p>
-          <input class="color-1" value="#fdcb6e">
+          <input class="color-1" value="#fff">
         </label>
         <label>
           <p>--color-2</p>
-          <input class="color-2" value="#ff7675">
+          <input class="color-2" value="#000">
         </label>
         <label>
           <p>--color-3</p>
-          <input class="color-3" value="#2d3436">
+          <input class="color-3" value="#666">
         </label>
       </div>
       <div class="demo">
