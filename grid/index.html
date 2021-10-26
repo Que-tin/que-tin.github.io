@@ -11,7 +11,7 @@
         margin: 0;
         font-family: Montserrat;
         --gap: 1rem;
-        --columns: 10% 1fr minmax(50vh, 300px);
+        --columns: repeat(3, 1fr);
         --rows: repeat(2, 1fr);
         --flow: row;
       }
@@ -103,7 +103,7 @@
         </label>
         <label>
           <p>Columns</p>
-          <input class="columns" type="text" placeholder="Columns" value="10% 1fr minmax(50vh, 300px)">
+          <input class="columns" type="text" placeholder="Columns" value="repeat(3, 1fr)">
         </label>
         <label>
           <p>Rows</p>
